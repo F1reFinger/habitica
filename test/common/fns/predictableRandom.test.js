@@ -48,4 +48,31 @@ describe('shared.fns.predictableRandom', () => {
 
     expect(val2).to.not.equal(val1);
   });
+
+  it('return different value when same double is passed', () => {
+    const val1 = predictableRandom(user, 3.14159265359);
+    const val2 = predictableRandom(user, 3.14159265359);
+
+    expect(val2).to.equal(val1);
+  });
+
+  it('return different value when a diferent double is passed', () => {
+    const val1 = predictableRandom(user, 3.14159265389);
+    const val2 = predictableRandom(user, 3.14159265359);
+
+    expect(val2).to.not.equal(val1);
+  });
+
+  it('return NaN value when a String is passed', () => {
+    const val1 = predictableRandom(user, 'Teste');
+
+    expect(val1).to.be.NaN;
+  });
+
+  it('return NaN value when an empty string is passed', () => {
+    const val1 = predictableRandom(user, ' ');
+
+    expect(val1).to.be.null;
+  });
+
 });

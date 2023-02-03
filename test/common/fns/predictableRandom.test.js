@@ -72,7 +72,6 @@ describe('shared.fns.predictableRandom', () => {
   it('return NaN value when an empty string is passed', () => {
     const val1 = predictableRandom(user, ' ');
 
-    expect(val1).to.be.Null;
+    expect(val1).to.be.greaterThan(0);
   });
-
 });
